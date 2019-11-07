@@ -1,32 +1,38 @@
-package com.modelo;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package conexion;
+
 
 import java.util.Date;
 import java.util.Objects;
 
 public class Reservation {
-    private String id;
-    private String roomId;
+    private int id;
+    private int roomId;
     private String name;
     private String lastName;
-    private Date bornDate;
+    private String lastName2;
     private String email;
     private int creditCardNumber;
-    private Date checkInDate;
-    private Date checkOutDate;
+    private String checkInDate;
+    private String checkOutDate;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getRoomId() {
+    public int getRoomId() {
         return roomId;
     }
 
-    public void setRoomId(String roomId) {
+    public void setRoomId(int roomId) {
         this.roomId = roomId;
     }
 
@@ -46,12 +52,12 @@ public class Reservation {
         this.lastName = lastName;
     }
 
-    public Date getBornDate() {
-        return bornDate;
+    public String getLastName2() {
+        return lastName2;
     }
 
-    public void setBornDate(Date bornDate) {
-        this.bornDate = bornDate;
+    public void setLastName2(String lastName) {
+        this.lastName2 = lastName2;
     }
 
     public String getEmail() {
@@ -70,19 +76,19 @@ public class Reservation {
         this.creditCardNumber = creditCardNumber;
     }
 
-    public Date getCheckInDate() {
+    public String getCheckInDate() {
         return checkInDate;
     }
 
-    public void setCheckInDate(Date checkInDate) {
+    public void setCheckInDate(String checkInDate) {
         this.checkInDate = checkInDate;
     }
 
-    public Date getCheckOutDate() {
+    public String getCheckOutDate() {
         return checkOutDate;
     }
 
-    public void setCheckOutDate(Date checkOutDate) {
+    public void setCheckOutDate(String checkOutDate) {
         this.checkOutDate = checkOutDate;
     }
 
@@ -93,7 +99,7 @@ public class Reservation {
                 ", roomId='" + roomId + '\'' +
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", bornDate=" + bornDate +
+                ", lastName2='" + lastName2 + '\'' +
                 ", email='" + email + '\'' +
                 ", creditCardNumber=" + creditCardNumber +
                 ", checkInDate=" + checkInDate +
@@ -111,7 +117,7 @@ public class Reservation {
                 Objects.equals(roomId, that.roomId) &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(lastName, that.lastName) &&
-                Objects.equals(bornDate, that.bornDate) &&
+                Objects.equals(lastName2, that.lastName2) &&
                 Objects.equals(email, that.email) &&
                 Objects.equals(checkInDate, that.checkInDate) &&
                 Objects.equals(checkOutDate, that.checkOutDate);

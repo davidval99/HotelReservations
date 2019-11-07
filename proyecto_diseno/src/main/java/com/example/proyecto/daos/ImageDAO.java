@@ -1,8 +1,10 @@
 package daos;
 
+import java.util.List;
+
 public interface ImageDAO {
-    public Image insert(int hotelId);
-    public Image findByHotelId(int hotelId);
+    public List<ImageRoom> findByRoomId(int roomId);
+    public List<ImageHotel> findByHotelId(int hotelId);
 
 
 }
