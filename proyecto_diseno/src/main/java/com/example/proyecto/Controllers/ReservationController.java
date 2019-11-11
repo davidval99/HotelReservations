@@ -31,9 +31,4 @@ public class ReservationController {
         return "post";
     }
 
-
-
-
-
-
 }
