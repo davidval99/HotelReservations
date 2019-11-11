@@ -1,13 +1,15 @@
+package com.example.proyecto.modelo;
+
 import java.sql.*;
 
 public class Conexion {
-    public Connection conectar() {
+    public static Connection conectar() {
         Connection connection = null;
         if (connection != null) {
-            return;
+            return null;
         }
-        String url = "jdbc:postgresql://localhost:5432/postgres";
-        String user = "postgres"
+        String url = "jdbc:postgresql://localhost:5433/postgres";
+        String user = "postgres";
         String password = "root";
         try {
             Class.forName("org.postgresql.Driver");

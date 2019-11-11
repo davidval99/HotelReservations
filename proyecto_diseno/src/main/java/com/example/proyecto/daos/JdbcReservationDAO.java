@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package conexion;
+package com.example.proyecto.daos;
+
+import com.example.proyecto.modelo.Conexion;
+import com.proyecto.example.modelo.Reservation;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -12,6 +15,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 public class JdbcReservationDAO implements ReservationDAO {
     @Override
@@ -24,7 +28,7 @@ public class JdbcReservationDAO implements ReservationDAO {
 	String sql="SELECT max(usuario_id) from usuario;";
         String sql2="INSERT INTO usuario(usuario_id,nombre,apellido1,apellido2,correo,numTarjeta) VALUES("+id+",'"+name+"','"+lastName+"','"+lastName2+"','"+email+"',"+creditCardNumber+");";
 	try {			
-            co = Conexion.conexion();
+            co = Conexion.conectar();
             stm=co.createStatement();
             rs=stm.executeQuery(sql);
             id += rs.getInt(1);
@@ -34,7 +38,7 @@ public class JdbcReservationDAO implements ReservationDAO {
             System.out.println("Error: No se pudo obtener el id");
         }
         try{
-            co = Conexion.conexion();
+            co = Conexion.conectar();
             stm = co.createStatement();
             stm.executeUpdate(sql2);
             stm.close();
@@ -54,7 +58,7 @@ public class JdbcReservationDAO implements ReservationDAO {
 	String sql2="SELECT max(reserva_id) from reserva;";        
         String sql="INSERT INTO reserva(reserva_id,habitacion_id_fk,usuario_id_fk,fecha_inicio,fecha_fin) VALUES("+reservationID+","+roomId+","+userId+",'"+checkInDate+"','"+checkOutDate+"');";
         try {			
-            co = Conexion.conexion();
+            co = Conexion.conectar();
             stm=co.createStatement();
             rs=stm.executeQuery(sql2);
             while (rs.next()) {
@@ -66,7 +70,7 @@ public class JdbcReservationDAO implements ReservationDAO {
             System.out.println("Error: No se pudo obtener el id");
         }
        	try {			
-            co = Conexion.conexion();
+            co = Conexion.conectar();
             stm=co.createStatement();
             stm.executeUpdate(sql);
             stm.close();
@@ -77,7 +81,7 @@ public class JdbcReservationDAO implements ReservationDAO {
         return reservationID;
     }
     @Override
-    public Reservation update(Date checkInDate, Date checkOutDate) {
+    public Optional<Reservation> update(Date checkInDate, Date checkOutDate) {
         return null;
     }
     @Override
@@ -90,7 +94,7 @@ public class JdbcReservationDAO implements ReservationDAO {
         List<Reservation> listaReserva= new ArrayList<Reservation>();
 
         try {
-            co = Conexion.conexion();
+            co = Conexion.conectar();
             stm=co.createStatement();
             rs=stm.executeQuery(sql);
             while (rs.next()) {

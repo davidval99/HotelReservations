@@ -1,4 +1,4 @@
-package daos;
+package com.example.proyecto.daos;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -6,6 +6,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.example.proyecto.modelo.Conexion;
+import com.proyecto.example.modelo.ImageRoom;
+import com.proyecto.example.modelo.ImageHotel;
 
 public class JdbcImageDAO implements ImageDAO {
     @Override
@@ -58,7 +62,7 @@ public class JdbcImageDAO implements ImageDAO {
                 ih.setId(rs.getInt(1));
                 ih.setPath(rs.getString(2));
                 ih.setHotelId(rs.getInt(3));
-                imagenesHotel.add(ir);
+                imagenesHotel.add(ih);
             }
             stmt.close();
             rs.close();
