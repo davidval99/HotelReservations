@@ -11,7 +11,8 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
 
 @EnableAutoConfiguration(exclude = {JndiConnectionFactoryAutoConfiguration.class, DataSourceAutoConfiguration.class,
 		HibernateJpaAutoConfiguration.class, JpaRepositoriesAutoConfiguration.class, DataSourceTransactionManagerAutoConfiguration.class})
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages={
+		"com.example.proyecto"})
 public class ProyectoDisenoApplication {
 
 	public static void main(String[] args) {

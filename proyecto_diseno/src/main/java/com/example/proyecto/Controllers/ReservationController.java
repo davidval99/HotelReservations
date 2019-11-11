@@ -5,28 +5,30 @@ import com.example.proyecto.modelo.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
+import java.util.Optional;
 
 @RestController
 public class ReservationController {
 
     @Autowired
-    com.example.proyecto.services.ReservationService ReservationService;
+    ReservationService ReservationService;
 
     @GetMapping(value = "/")
     public String prueba(){return "esto es una prueba";}
 
-    @PostMapping
-    public String Create(int room, int userId, String name, String lastName, Date bornDate, String email,
-                                       Date checkInDate, Date checkOutDate, int creditCard){
-        return ReservationService.CreateReservation(room,userId,name,lastName,email,checkInDate,checkOutDate,creditCard).toString();
+    @PostMapping(value = "/createReservation")
+    public String CreateReservation(@RequestBody PostDto post){
+        Optional<Reservation> r = ReservationService.CreateReservation(post.room,post.userId,post.name,post.lastName,post.email,post.checkInDate,post.checkOutDate,post.creditCard);
+        return "Post completed";
     }
 
-    @PostMapping
-    public Reservation Update(Date checkInDate, Date checkOutDate){
-        return null;
+    @PostMapping(value = "/updateReservation")
+    public String UpdateReservation(@RequestBody PostDto post){
+        return "post";
     }
 
 
