@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.proyecto.modelo.Conexion;
-import com.proyecto.example.modelo.ImageRoom;
-import com.proyecto.example.modelo.ImageHotel;
+import com.example.proyecto.modelo.ImageHotel;
+import com.example.proyecto.modelo.ImageRoom;
 
 public class JdbcImageDAO implements ImageDAO {
     @Override

@@ -1,11 +1,11 @@
 package com.example.proyecto.services;
 
-import com.proyecto.example.daos.HotelDAO;
-import com.proyecto.example.modelo.Hotel;
+import com.example.proyecto.daos.HotelDAO;
+import com.example.proyecto.modelo.Hotel;
 
 public interface HotelService {
 
-    HotelDAO HotelDAO = null;
+    com.example.proyecto.daos.HotelDAO HotelDAO = null;
 
     public Hotel Create(String name, int score, String country, String region, String roomType);
 

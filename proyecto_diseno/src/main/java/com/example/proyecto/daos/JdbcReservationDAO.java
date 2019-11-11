@@ -6,7 +6,9 @@
 package com.example.proyecto.daos;
 
 import com.example.proyecto.modelo.Conexion;
-import com.proyecto.example.modelo.Reservation;
+import com.example.proyecto.modelo.Reservation;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -17,6 +19,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class JdbcReservationDAO implements ReservationDAO {
     @Override
     public int CreateUser(String name, String lastName, String lastName2, String email, int creditCardNumber) {
@@ -50,7 +53,7 @@ public class JdbcReservationDAO implements ReservationDAO {
         return id;
     }
     @Override
-    public int CreateReservation(int roomId, int userId, String checkInDate, String checkOutDate) {
+    public Optional<Reservation> CreateReservation(int roomId, int userId, String name, String lastName,  String email, Date checkInDate, Date checkOutDate, int creditCard) {
         int reservationID = 0;
         Connection co = null;
         Statement stm= null;
@@ -78,7 +81,7 @@ public class JdbcReservationDAO implements ReservationDAO {
 	} catch (SQLException e) {
             System.out.println("Error: No se pudo insertar la reserva");
         }
-        return reservationID;
+        return Optional.empty();
     }
     @Override
     public Optional<Reservation> update(Date checkInDate, Date checkOutDate) {

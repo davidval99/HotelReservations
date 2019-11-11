@@ -5,14 +5,14 @@
  */
 package com.example.proyecto.daos;
 
-import com.proyecto.example.modelo.Reservation;
+import com.example.proyecto.modelo.Reservation;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 public interface ReservationDAO {
-    public int CreateReservation(int roomId, int userId, String checkInDate, String checkOutDate);
+    public Optional<Reservation> CreateReservation(int roomId, int userId, String name, String lastName, String email, Date checkInDate, Date checkOutDate, int creditCard);
     
     public int CreateUser(String name, String lastName, String lastName2, String email, int creditCardNumber);
 

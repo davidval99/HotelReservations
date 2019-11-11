@@ -1,6 +1,6 @@
 package com.example.proyecto.daos;
 
-import com.proyecto.example.modelo.Room;
+import com.example.proyecto.modelo.Room;
 
 import java.util.Optional;
 

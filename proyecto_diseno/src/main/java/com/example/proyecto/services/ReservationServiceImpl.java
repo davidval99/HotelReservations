@@ -1,17 +1,22 @@
 package com.example.proyecto.services;
 
-import com.proyecto.example.daos.ReservationDAO;
-import com.proyecto.example.modelo.Reservation;
+import com.example.proyecto.daos.ReservationDAO;
+import com.example.proyecto.modelo.Reservation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.Optional;
 
+@Service
 public class ReservationServiceImpl implements ReservationService {
 
-    com.proyecto.example.daos.ReservationDAO ReservationDAO;
+    @Autowired
+    ReservationDAO ReservationDAO;
 
     @Override
-    public Reservation create(String room, String name, String lastName, int bornDate, String email, Date checkInDate, Date checkOutDate) {
-        return null;
+    public Optional<Reservation> CreateReservation(int room, int userId, String name, String lastName, String email, Date checkInDate, Date checkOutDate, int creditCard) {
+        return ReservationDAO.CreateReservation(room, userId, name,lastName ,email,checkInDate,checkOutDate,creditCard);
     }
 
     @Override

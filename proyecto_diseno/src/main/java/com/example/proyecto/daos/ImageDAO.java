@@ -2,8 +2,8 @@ package com.example.proyecto.daos;
 
 import java.util.List;
 
-import com.proyecto.example.modelo.ImageRoom;
-import com.proyecto.example.modelo.ImageHotel;
+import com.example.proyecto.modelo.ImageHotel;
+import com.example.proyecto.modelo.ImageRoom;
 
 public interface ImageDAO {
     public List<ImageRoom> findByRoomId(int roomId);
