@@ -15,6 +15,9 @@ public class ReservationServiceImpl implements ReservationService {
     ReservationDAO ReservationDAO;
 
     @Override
+    public String prueba(){return ReservationDAO.prueba();}
+
+    @Override
     public Optional<Reservation> CreateReservation(int room, int userId, String name, String lastName, String email, Date checkInDate, Date checkOutDate, int creditCard) {
         return ReservationDAO.CreateReservation(room, userId, name,lastName ,email,checkInDate,checkOutDate,creditCard);
     }

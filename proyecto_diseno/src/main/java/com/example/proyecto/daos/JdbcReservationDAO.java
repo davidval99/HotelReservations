@@ -21,6 +21,9 @@ import java.util.Optional;
 
 @Repository
 public class JdbcReservationDAO implements ReservationDAO {
+    
+    public String prueba(){return "Esto es una prueba";}
+
     @Override
     public int CreateUser(String name, String lastName, String lastName2, String email, int creditCardNumber) {
         int id = 1;
