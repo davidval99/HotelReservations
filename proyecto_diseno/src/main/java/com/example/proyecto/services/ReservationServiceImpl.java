@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -13,6 +14,9 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Autowired
     ReservationDAO ReservationDAO;
+
+    @Override
+    public String conexion(){return ReservationDAO.conexion();}
 
     @Override
     public String prueba(){return ReservationDAO.prueba();}
@@ -26,4 +30,8 @@ public class ReservationServiceImpl implements ReservationService {
     public Reservation update(Date checkInDate, Date checkOutDate) {
         return null;
     }
+
+    @Override
+    public List<Reservation> findBy(){return ReservationDAO.findBy();}
+
 }

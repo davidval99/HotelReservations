@@ -13,6 +13,8 @@ import java.util.Optional;
 
 public interface ReservationDAO {
 
+    public String conexion();
+
     public String prueba();
 
     public Optional<Reservation> CreateReservation(int roomId, int userId, String name, String lastName, String email, Date checkInDate, Date checkOutDate, int creditCard);

@@ -5,22 +5,16 @@ import java.sql.*;
 public class Conexion {
     public static Connection conectar() {
         Connection connection = null;
-        if (connection != null) {
-            return null;
-        }
-        String url = "jdbc:postgresql://localhost:5433/postgres";
-        String user = "postgres";
-        String password = "root";
+
         try {
             Class.forName("org.postgresql.Driver");
-            connection = DriverManager.getConnection(url, user, password);
-
-            if (connection != null) {
-                System.out.println("Conectando a la BD...");
-            }
+            connection = DriverManager
+                    .getConnection("jdbc:postgresql://localhost:5432/postgres",
+                            "postgres", "root");
         } catch (Exception e) {
-            System.out.println("Error al conectar");
+            return null;
         }
         return connection;
+
     }
 }
