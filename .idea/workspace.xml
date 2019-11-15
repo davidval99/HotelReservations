@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b81af0ef-2ada-4aef-a9b4-6e3b7aaf3cec" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/vistafromulario/src/components/FormularioHotel.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vistafromulario/src/components/Header/Header.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vistafromulario/src/components/Header/_Header.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistafromulario/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vistafromulario/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistafromulario/src/components/HelloWorld.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto_diseno/src/main/java/com/example/proyecto/modelo/Conexion.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto_diseno/src/main/java/com/example/proyecto/modelo/Conexion.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,7 +16,7 @@
     <option name="done" value="true" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/vistafromulario" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
@@ -26,8 +24,9 @@
   <component name="ProjectId" id="1SrlLshnt7HOc1eeySWUvm73dSN" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/vistafromulario/src/components" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/proyecto_diseno" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">

@@ -1,4 +1,6 @@
-package services;
+package com.example.proyecto.services;
+
+import com.example.proyecto.modelo.Hotel;
 
 public class HotelServiceImpl implements HotelService {
     @Override

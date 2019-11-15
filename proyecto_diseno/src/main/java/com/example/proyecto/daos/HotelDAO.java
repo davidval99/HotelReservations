@@ -1,4 +1,4 @@
-package daos;
+package com.example.proyecto.daos;
 
 public interface HotelDAO {
     public void Create(String name,int score,String country, String region, String roomType);

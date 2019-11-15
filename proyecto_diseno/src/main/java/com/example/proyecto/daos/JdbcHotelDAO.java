@@ -1,4 +1,4 @@
-package daos;
+package com.example.proyecto.daos;
 
 public class JdbcHotelDAO implements HotelDAO {
 
