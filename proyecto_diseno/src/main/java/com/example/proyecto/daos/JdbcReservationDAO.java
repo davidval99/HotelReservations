@@ -15,9 +15,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.sql.PreparedStatement;
 
 @Repository
 public class JdbcReservationDAO implements ReservationDAO {
@@ -34,78 +34,114 @@ public class JdbcReservationDAO implements ReservationDAO {
     }
 
     @Override
-    public int CreateUser(String name, String lastName, String lastName2, String email, int creditCardNumber) {
-        int id = 1;
+    public int CreateUser(Reservation reserva) {
+        int id = getIdUser();
         Connection co = null;
-        Statement stm= null;
-        ResultSet rs=null;
-        
-	    String sql="SELECT max(usuario_id) from usuario;";
-        String sql2="INSERT INTO usuario(usuario_id,nombre,apellido1,apellido2,correo,numTarjeta) VALUES("+id+",'"+name+"','"+lastName+"','"+lastName2+"','"+email+"',"+creditCardNumber+");";
-	try {			
-            co = Conexion.conectar();
-            stm=co.createStatement();
-            rs=stm.executeQuery(sql);
-            id += rs.getInt(1);
-            stm.close();
-            co.close();
-	} catch (SQLException e) {
-            System.out.println("Error: No se pudo obtener el id");
-        }
+
+        String sql="INSERT INTO usuario(usuario_id,nombre,apellido1,apellido2,correo,num_Tarjeta) VALUES(?,?,?,?,?,?);";
         try{
             co = Conexion.conectar();
-            stm = co.createStatement();
-            stm.executeUpdate(sql2);
-            stm.close();
+            PreparedStatement pstm = co.prepareStatement(sql);
+            pstm.setInt(1,id);
+            pstm.setString(2,reserva.getName());
+            pstm.setString(3,reserva.getLastName());
+            pstm.setString(4,reserva.getLastName2());
+            pstm.setString(5,reserva.getEmail());
+            pstm.setInt(6,reserva.getCreditCardNumber());
+            pstm.executeUpdate();
+            System.out.print(sql);
+            pstm.close();
             co.close();
         }
         catch(SQLException e){
             System.out.println("No se pudo insertar el usuario");
+            e.printStackTrace();
         }
         return id;
     }
     @Override
-    public Optional<Reservation> CreateReservation(int roomId, int userId, String name, String lastName,  String email, Date checkInDate, Date checkOutDate, int creditCard) {
-        int reservationID = 0;
-        Connection co = null;
-        Statement stm= null;
-        ResultSet rs=null;
-	    String sql2="SELECT max(reserva_id) from reserva;";
-        String sql="INSERT INTO reserva(reserva_id,habitacion_id_fk,usuario_id_fk,fecha_inicio,fecha_fin) VALUES("+reservationID+","+roomId+","+userId+",'"+checkInDate+"','"+checkOutDate+"');";
-        try {			
+    //Esta funcion nos retorna el id mas grande de un usuario de la base de datos y nos sirve para insertar uno nuevo
+    public int getIdUser(){
+        int id = 1;
+        Connection co= null;
+        Statement stm = null;
+        ResultSet rs= null;
+        String sql = "SELECT MAX(usuario_id) from usuario;";
+        try{
             co = Conexion.conectar();
             stm=co.createStatement();
-            rs=stm.executeQuery(sql2);
-            while (rs.next()) {
-            reservationID = rs.getInt(1);
+            rs = stm.executeQuery(sql);
+            while(rs.next()){
+                id += rs.getInt(1);
             }
             stm.close();
             co.close();
-	} catch (SQLException e) {
-            System.out.println("Error: No se pudo obtener el id");
+        }  catch (SQLException e){
+            System.out.println("Error: No se pudo obtener el max id del usuario");
+            e.printStackTrace();
         }
-       	try {			
+        return id;
+    }
+    @Override
+    //Este metodo nos retorna el id mas grande de las reservaciones creadas y nos sirve para crear una nueva reservacion
+    public int getIdReservation(){
+        int idR = 1;
+        Connection co= null;
+        Statement stm = null;
+        ResultSet rs= null;
+        String sql = "SELECT MAX(reserva_id) from reserva;";
+        try{
             co = Conexion.conectar();
             stm=co.createStatement();
-            stm.executeUpdate(sql);
+            rs = stm.executeQuery(sql);
+            while(rs.next()){
+                idR += rs.getInt(1);
+            }
             stm.close();
             co.close();
-	} catch (SQLException e) {
-            System.out.println("Error: No se pudo insertar la reserva");
+        }  catch (SQLException e){
+            System.out.println("Error: No se pudo obtener el max id del usuario");
+            e.printStackTrace();
+        }
+        return idR;
+    }
+    @Override
+    //Este metodo crea una nueva reservacion
+    //Recibe un objeto de tipo Reservation y lo desmenusa para insertar a la base de datos
+    public Optional<Reservation> CreateReservation(Reservation reserva) {
+        int reservationID = getIdReservation();
+        int userID = getIdUser();
+        userID = userID - 1;
+        Connection co = null;
+        String sql="INSERT INTO reserva(reserva_id,habitacion_id_fk,usuario_id_fk,fecha_inicio,fecha_fin) VALUES(?,?,?,?,?);";
+        try{
+            co = Conexion.conectar();
+            PreparedStatement pstm = co.prepareStatement(sql);
+            pstm.setInt(1,reservationID);
+            pstm.setInt(2,reserva.getRoomId());
+            pstm.setInt(3,userID);
+            pstm.setString(4,reserva.getCheckInDate());
+            pstm.setString(5,reserva.getCheckOutDate());
+            pstm.executeUpdate();
+            System.out.print(sql);
+            pstm.close();
+            co.close();
+        }
+        catch(SQLException e){
+            System.out.println("No se pudo insertar la reservacion");
+            e.printStackTrace();
         }
         return Optional.empty();
+
     }
     @Override
-    public Optional<Reservation> update(Date checkInDate, Date checkOutDate) {
-        return null;
-    }
-    @Override
+    //Este metodo nos retorna el arreglo con las reservaciones existentes en la base de de datos
     public List<Reservation> findBy() {
         Connection co = null;
         Statement stm= null;
         ResultSet rs=null;
 
-        String sql="SELECT r.reserva_id, r.habitacion_id_fk, r.fecha_inicio, r.fecha_fin, u.nombre, u.apellido1,u.apellido2, u.correo,u.num_tarjeta FROM reserva r inner join usuario u on r.usuario_id_fk = u.usuario_id;";
+        String sql="SELECT r.reserva_id, r.habitacion_id_fk, r.fecha_inicio, r.fecha_fin, u.nombre, u.apellido1, u.apellido2, u.correo,u.num_tarjeta FROM reserva r inner join usuario u on r.usuario_id_fk = u.usuario_id;";
         List<Reservation> listaReserva= new ArrayList<Reservation>();
 
         try {
@@ -130,6 +166,7 @@ public class JdbcReservationDAO implements ReservationDAO {
             co.close();
         } catch (SQLException e) {
             System.out.println("Error al cargar las reservaciones");
+            e.printStackTrace();
         }
         return listaReserva;
     }

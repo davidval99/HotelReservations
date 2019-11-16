@@ -17,12 +17,15 @@ public interface ReservationDAO {
 
     public String prueba();
 
-    public Optional<Reservation> CreateReservation(int roomId, int userId, String name, String lastName, String email, Date checkInDate, Date checkOutDate, int creditCard);
-    
-    public int CreateUser(String name, String lastName, String lastName2, String email, int creditCardNumber);
+    public Optional<Reservation> CreateReservation(Reservation reserva);
 
-    public Optional<Reservation> update(Date checkInDate, Date checkOutDate);
+    public int CreateUser(Reservation reserva);
+
+    public int getIdReservation();
+
+    public int getIdUser();
 
     public List<Reservation> findBy();
+
 
 }
