@@ -7,12 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Service
 public class HotelServiceImpl implements HotelService {
 
     @Autowired
     JdbcHotelDAO hotelDao;
+
+    @Override
+    public Hotel findByName(String name){return hotelDao.findByName(name);}
 
     @Override
     public Hotel Create(String name, int score, String country, String region, String roomType) {

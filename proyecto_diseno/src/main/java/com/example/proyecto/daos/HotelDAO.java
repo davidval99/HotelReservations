@@ -15,7 +15,7 @@ public interface HotelDAO {
 
     public ArrayList<ImageHotel> listAllHotelsImage();
 
-    public void findByName(int id);
+    public Hotel findByName(String name);
 
     public ArrayList<Hotel> listAllHotels();
 

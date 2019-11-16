@@ -59,11 +59,36 @@ public class JdbcHotelDAO implements HotelDAO {
 
 
     @Override
-    public void findByName(int id) {
+    public Hotel findByName(String name) {
 
+        Connection co = null;
+
+        String sql="";
+
+        Hotel h = new Hotel();
+        try {
+            co = Conexion.conectar();
+
+            PreparedStatement ps=co.prepareStatement("Select * from hotel where nombre = ?;");
+            ps.setString(1,name);
+            ResultSet rs=ps.executeQuery();
+
+            if(rs.next()) {
+                h.setRegion(rs.getString(1));
+                h.setScore(rs.getFloat(2));
+                h.setName(rs.getString(3));
+                h.setId(rs.getInt(4));
+                h.setCountry(rs.getString(5));
+            }
+
+            co.close();
+            return h;
+        } catch (SQLException e) {
+            return null;
+        }
     }
 
-    public ArrayList<Hotel> listAllHotelsByRegion(){
+        public ArrayList<Hotel> listAllHotelsByRegion(){
         Connection co = null;
         Statement stm= null;
         ResultSet rs=null;

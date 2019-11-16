@@ -5,12 +5,15 @@ import com.example.proyecto.modelo.Hotel;
 import com.example.proyecto.modelo.ImageHotel;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 public interface HotelService{
 
     com.example.proyecto.daos.HotelDAO HotelDAO = null;
 
     public Hotel Create(String name, int score, String country, String region, String roomType);
+
+    public Hotel findByName(String name);
 
     public ArrayList<Hotel> listAllHotels();
 
