@@ -40,7 +40,7 @@ public class JdbcReservationDAO implements ReservationDAO {
         Statement stm= null;
         ResultSet rs=null;
         
-	String sql="SELECT max(usuario_id) from usuario;";
+	    String sql="SELECT max(usuario_id) from usuario;";
         String sql2="INSERT INTO usuario(usuario_id,nombre,apellido1,apellido2,correo,numTarjeta) VALUES("+id+",'"+name+"','"+lastName+"','"+lastName2+"','"+email+"',"+creditCardNumber+");";
 	try {			
             co = Conexion.conectar();
@@ -70,7 +70,7 @@ public class JdbcReservationDAO implements ReservationDAO {
         Connection co = null;
         Statement stm= null;
         ResultSet rs=null;
-	String sql2="SELECT max(reserva_id) from reserva;";        
+	    String sql2="SELECT max(reserva_id) from reserva;";
         String sql="INSERT INTO reserva(reserva_id,habitacion_id_fk,usuario_id_fk,fecha_inicio,fecha_fin) VALUES("+reservationID+","+roomId+","+userId+",'"+checkInDate+"','"+checkOutDate+"');";
         try {			
             co = Conexion.conectar();

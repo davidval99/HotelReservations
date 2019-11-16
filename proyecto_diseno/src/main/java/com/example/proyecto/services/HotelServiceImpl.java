@@ -7,4 +7,8 @@ public class HotelServiceImpl implements HotelService {
     public Hotel Create(String name, int score, String country, String region, String roomType) {
         return null;
     }
+
+    @Override
+    public String conexion(){return HotelDAO.conexion();}
 }
+
