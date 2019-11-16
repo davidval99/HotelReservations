@@ -30,7 +30,7 @@ public class ReservationController {
             Class.forName("org.postgresql.Driver");
             c = DriverManager
                     .getConnection("jdbc:postgresql://localhost:5432/postgres",
-                            "postgres", "root");
+                            "postgres", "johanherr1024");
         } catch (Exception e) {
             return e.getClass().getName()+": "+e.getMessage();
 
