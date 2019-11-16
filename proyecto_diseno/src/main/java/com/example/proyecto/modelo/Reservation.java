@@ -56,7 +56,7 @@ public class Reservation {
         return lastName2;
     }
 
-    public void setLastName2(String lastName) {
+    public void setLastName2(String lastName2) {
         this.lastName2 = lastName2;
     }
 
