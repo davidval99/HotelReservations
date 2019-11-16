@@ -10,7 +10,7 @@ public class Conexion {
             Class.forName("org.postgresql.Driver");
             connection = DriverManager
                     .getConnection("jdbc:postgresql://localhost:5432/postgres",
-                            "postgres", "johanherr1024");
+                            "postgres", "root");
         } catch (Exception e) {
             return null;
         }

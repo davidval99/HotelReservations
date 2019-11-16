@@ -1,11 +1,66 @@
 package com.example.proyecto.modelo;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class ImageHotel {
     private int id;
     private int hotelId;
     private String path;
+    private int idHotel;
+    private String name;
+    private float  score;
+    private String country;
+    private String region;
+    private ArrayList<String> roomType;
+
+    public int getIdHotel() {
+        return idHotel;
+    }
+
+    public void setIdHotel(int idHotel) {
+        this.idHotel = idHotel;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public float getScore() {
+        return score;
+    }
+
+    public void setScore(float score) {
+        this.score = score;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public ArrayList<String> getRoomType() {
+        return roomType;
+    }
+
+    public void setRoomType(ArrayList<String> roomType) {
+        this.roomType = roomType;
+    }
 
     public int getId() {
         return id;
@@ -31,22 +86,39 @@ public class ImageHotel {
         this.path = path;
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return "ImageHotel{" +
                 "id=" + id +
                 ", hotelId=" + hotelId +
                 ", path='" + path + '\'' +
+                ", idHotel=" + idHotel +
+                ", name='" + name + '\'' +
+                ", score=" + score +
+                ", country='" + country + '\'' +
+                ", region='" + region + '\'' +
+                ", roomType=" + roomType +
                 '}';
     }
 
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        if (!super.equals(object)) return false;
-        ImageHotel that = (ImageHotel) object;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ImageHotel that = (ImageHotel) o;
         return id == that.id &&
                 hotelId == that.hotelId &&
-                java.util.Objects.equals(path, that.path);
+                idHotel == that.idHotel &&
+                Float.compare(that.score, score) == 0 &&
+                Objects.equals(path, that.path) &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(country, that.country) &&
+                Objects.equals(region, that.region) &&
+                Objects.equals(roomType, that.roomType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, hotelId, path, idHotel, name, score, country, region, roomType);
     }
 }
