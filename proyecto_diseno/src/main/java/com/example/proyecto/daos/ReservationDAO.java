@@ -13,13 +13,7 @@ import java.util.Optional;
 
 public interface ReservationDAO {
 
-    public String conexion();
-
-    public String prueba();
-
     public Optional<Reservation> CreateReservation(Reservation reserva);
-
-    public int CreateUser(Reservation reserva);
 
     public int getIdReservation();
 

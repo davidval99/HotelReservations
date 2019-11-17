@@ -30,7 +30,7 @@ public class ReservationController {
             Class.forName("org.postgresql.Driver");
             c = DriverManager
                     .getConnection("jdbc:postgresql://localhost:5432/postgres",
-                            "postgres", "johanherr1024");
+                            "postgres", "root");
         } catch (Exception e) {
             return e.getClass().getName()+": "+e.getMessage();
 
@@ -43,12 +43,9 @@ public class ReservationController {
     @GetMapping(value = "/")
     public String prueba(){return "esto es una prueba";}
 
-    @GetMapping(value = "/prueba")
-    public String pruebaURL(){return ReservationService.prueba();}
-
     @PostMapping(value = "/createReservation")
     public String CreateReservation(@RequestBody PostDto post){
-        Optional<Reservation> r = ReservationService.CreateReservation(post.room,post.userId,post.name,post.lastName,post.email,post.checkInDate,post.checkOutDate,post.creditCard);
+        Optional<Reservation> r = ReservationService.CreateReservation(post.room,post.userId,post.checkInDate,post.checkOutDate,post.creditCard);
         return "Post completed";
     }
 

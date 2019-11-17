@@ -10,55 +10,15 @@ import com.example.proyecto.modelo.Reservation;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.sql.PreparedStatement;
 
 @Repository
 public class JdbcReservationDAO implements ReservationDAO {
 
-    @Override
-    public String prueba(){return "Esto es una prueba";}
 
-    @Override
-    public String conexion(){
-        Connection co = null;
-        co = Conexion.conectar();
-        if(co != null) return "Conectado";
-        else return "No conectado";
-    }
-
-    @Override
-    public int CreateUser(Reservation reserva) {
-        int id = getIdUser();
-        Connection co = null;
-
-        String sql="INSERT INTO usuario(usuario_id,nombre,apellido1,apellido2,correo,num_Tarjeta) VALUES(?,?,?,?,?,?);";
-        try{
-            co = Conexion.conectar();
-            PreparedStatement pstm = co.prepareStatement(sql);
-            pstm.setInt(1,id);
-            pstm.setString(2,reserva.getName());
-            pstm.setString(3,reserva.getLastName());
-            pstm.setString(4,reserva.getLastName2());
-            pstm.setString(5,reserva.getEmail());
-            pstm.setInt(6,reserva.getCreditCardNumber());
-            pstm.executeUpdate();
-            System.out.print(sql);
-            pstm.close();
-            co.close();
-        }
-        catch(SQLException e){
-            System.out.println("No se pudo insertar el usuario");
-            e.printStackTrace();
-        }
-        return id;
-    }
     @Override
     //Esta funcion nos retorna el id mas grande de un usuario de la base de datos y nos sirve para insertar uno nuevo
     public int getIdUser(){
@@ -120,8 +80,8 @@ public class JdbcReservationDAO implements ReservationDAO {
             pstm.setInt(1,reservationID);
             pstm.setInt(2,reserva.getRoomId());
             pstm.setInt(3,userID);
-            pstm.setString(4,reserva.getCheckInDate());
-            pstm.setString(5,reserva.getCheckOutDate());
+            pstm.setDate(4, (Date) reserva.getCheckInDate());
+            pstm.setDate(5, (Date) reserva.getCheckOutDate());
             pstm.executeUpdate();
             System.out.print(sql);
             pstm.close();
@@ -152,8 +112,8 @@ public class JdbcReservationDAO implements ReservationDAO {
                 Reservation r=new Reservation();
                 r.setId(rs.getInt(1));
                 r.setRoomId(rs.getInt(2));
-                r.setCheckInDate(rs.getString(3));
-                r.setCheckOutDate(rs.getString(4));
+                r.setCheckInDate(rs.getDate(3));
+                r.setCheckOutDate(rs.getDate(4));
                 r.setName(rs.getString(5));
                 r.setLastName(rs.getString(6));
                 r.setLastName2(rs.getString(7));
