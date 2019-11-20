@@ -5,7 +5,7 @@ import java.util.Date;
 
 @Entity
 public class PostDto {
-    int room;
+
     int userId;
     String name;
     String lastName;
@@ -14,8 +14,9 @@ public class PostDto {
     Date checkOutDate;
     int creditCard;
 
-    public PostDto(int room, int userId, String name, String lastName, String email, Date checkInDate, Date checkOutDate, int creditCard) {
-        this.room = room;
+    public PostDto(){}
+
+    public PostDto(int userId, String name, String lastName, String email, Date checkInDate, Date checkOutDate, int creditCard) {
         this.userId = userId;
         this.name = name;
         this.lastName = lastName;
@@ -23,14 +24,6 @@ public class PostDto {
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
         this.creditCard = creditCard;
-    }
-
-    public int getRoom() {
-        return room;
-    }
-
-    public void setRoom(int room) {
-        this.room = room;
     }
 
     public int getUserId() {

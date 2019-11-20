@@ -46,6 +46,11 @@ public class HotelController {
         return hotelService.listAllHotelsImage().toString();
     }
 
+    @RequestMapping(value = "/listHotelNamePrueba/{name}", method = RequestMethod.GET)
+    public @ResponseBody Hotel pruebaHotel(@PathVariable("name") String name) {
+        return hotelService.findByName(name);
+    }
+
     @GetMapping(value = "/listHotelName/{name}")
     @ResponseBody
     public String listHotelName( @PathVariable("name") String name) {
