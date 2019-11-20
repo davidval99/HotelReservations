@@ -3,6 +3,7 @@ package com.example.proyecto.Controllers;
 
 import com.example.proyecto.modelo.Conexion;
 import com.example.proyecto.modelo.Hotel;
+import com.example.proyecto.modelo.ImageHotel;
 import com.example.proyecto.modelo.Reservation;
 import com.example.proyecto.services.HotelServiceImpl;
 import com.example.proyecto.services.ReservationService;
@@ -21,46 +22,35 @@ public class HotelController {
     @Autowired
     HotelServiceImpl hotelService;
 
-    @GetMapping(value = "/listHotels")
-    public String listarHoteles(){
-        return hotelService.listAllHotels().toString();
+    @RequestMapping(value = "/listHotels", method = RequestMethod.GET)
+    public @ResponseBody ArrayList<Hotel> listarHoteles(){
+        return hotelService.listAllHotels();
     }
 
-    @GetMapping(value = "/listHotelsPuntuation")
-    public String listAllHotelsByPuntuation(){
-        return hotelService.listAllHotelsByPuntuation().toString();
+    @RequestMapping(value = "/listHotelsPuntuation", method = RequestMethod.GET)
+    public @ResponseBody ArrayList<Hotel> listAllHotelsByPuntuation(){
+        return hotelService.listAllHotelsByPuntuation();
     }
 
-    @GetMapping(value = "/listHotelsCountry")
-    public String listAllHotelsByCountry(){
-        return hotelService.listAllHotelsByCountry().toString();
+    @RequestMapping(value = "/listHotelsCountry", method = RequestMethod.GET)
+    public @ResponseBody ArrayList<Hotel> listAllHotelsByCountry(){
+        return hotelService.listAllHotelsByCountry();
     }
 
-    @GetMapping(value = "/listHotelsRegion")
-    public String listAllHotelsByRegion(){
-        return hotelService.listAllHotelsByRegion().toString();
+    @RequestMapping(value = "/listHotelsRegion", method = RequestMethod.GET)
+    public @ResponseBody ArrayList<Hotel> listAllHotelsByRegion(){
+        return hotelService.listAllHotelsByRegion();
     }
 
-    @GetMapping(value = "/listHotelsImage")
-    public String listAllHotelsImage(){
-        return hotelService.listAllHotelsImage().toString();
+    @RequestMapping(value = "/listHotelsImage", method = RequestMethod.GET)
+    public @ResponseBody ArrayList<ImageHotel> listAllHotelsImage(){
+        return hotelService.listAllHotelsImage();
     }
 
-    @RequestMapping(value = "/listHotelNamePrueba/{name}", method = RequestMethod.GET)
-    public @ResponseBody Hotel pruebaHotel(@PathVariable("name") String name) {
+    @RequestMapping(value = "/listHotelName/{name}", method = RequestMethod.GET)
+    public @ResponseBody Hotel listHotelName(@PathVariable("name") String name) {
         return hotelService.findByName(name);
     }
 
-    @GetMapping(value = "/listHotelName/{name}")
-    @ResponseBody
-    public String listHotelName( @PathVariable("name") String name) {
-            return hotelService.findByName(name).toString();
-    }
-
-    @GetMapping(value = "/prueba/{name}")
-    @ResponseBody
-    public String prueba( @PathVariable("name") String name) {
-        return name;
-    }
 
 }
