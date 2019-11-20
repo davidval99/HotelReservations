@@ -4,18 +4,18 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Hotel {
-    private String id;
+    private int id;
     private String name;
     private float  score;
     private String country;
     private String region;
     private ArrayList<String> roomType;
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 

@@ -16,14 +16,14 @@ public class ReservationServiceImpl implements ReservationService {
     ReservationDAO ReservationDAO;
 
     @Override
-    public String conexion(){return ReservationDAO.conexion();}
-
-    @Override
-    public String prueba(){return ReservationDAO.prueba();}
-
-    @Override
-    public Optional<Reservation> CreateReservation(int room, int userId, String name, String lastName, String email, Date checkInDate, Date checkOutDate, int creditCard) {
-        return ReservationDAO.CreateReservation(room, userId, name,lastName ,email,checkInDate,checkOutDate,creditCard);
+    public Optional<Reservation> CreateReservation(int room, int userId, Date checkInDate, Date checkOutDate, int creditCard) {
+        Reservation reservation = new Reservation();
+        reservation.setRoomId(room);
+        reservation.setUserId(userId);
+        reservation.setCheckInDate(checkInDate);
+        reservation.setCheckOutDate(checkOutDate);
+        reservation.setCreditCardNumber(creditCard);
+        return ReservationDAO.CreateReservation(reservation);
     }
 
     @Override

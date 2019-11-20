@@ -11,14 +11,23 @@ import java.util.Objects;
 
 public class Reservation {
     private int id;
+    private int userId;
     private int roomId;
     private String name;
     private String lastName;
     private String lastName2;
     private String email;
     private int creditCardNumber;
-    private String checkInDate;
-    private String checkOutDate;
+    private Date checkInDate;
+    private Date checkOutDate;
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
     public int getId() {
         return id;
@@ -56,7 +65,7 @@ public class Reservation {
         return lastName2;
     }
 
-    public void setLastName2(String lastName) {
+    public void setLastName2(String lastName2) {
         this.lastName2 = lastName2;
     }
 
@@ -76,19 +85,19 @@ public class Reservation {
         this.creditCardNumber = creditCardNumber;
     }
 
-    public String getCheckInDate() {
+    public Date getCheckInDate() {
         return checkInDate;
     }
 
-    public void setCheckInDate(String checkInDate) {
+    public void setCheckInDate(Date checkInDate) {
         this.checkInDate = checkInDate;
     }
 
-    public String getCheckOutDate() {
+    public Date getCheckOutDate() {
         return checkOutDate;
     }
 
-    public void setCheckOutDate(String checkOutDate) {
+    public void setCheckOutDate(Date checkOutDate) {
         this.checkOutDate = checkOutDate;
     }
 
