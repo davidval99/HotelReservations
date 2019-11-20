@@ -10,7 +10,9 @@ import java.util.List;
 import com.example.proyecto.modelo.Conexion;
 import com.example.proyecto.modelo.ImageHotel;
 import com.example.proyecto.modelo.ImageRoom;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class JdbcImageDAO implements ImageDAO {
     @Override
     public List<ImageRoom> findByRoomId(int roomId) {
@@ -18,7 +20,7 @@ public class JdbcImageDAO implements ImageDAO {
         Statement stmt = null;
         ResultSet rs = null;
 
-        String sql = "SELECT * FROM IMAGENES_HABITACION WHERE HABITACION_ID_FK = "+roomId;
+        String sql = "SELECT * FROM imagenes_habitacion WHERE habitacion_id_fk = "+roomId;
 
         List<ImageRoom> imagenesHabitacion = new ArrayList<ImageRoom>();
 
@@ -49,7 +51,7 @@ public class JdbcImageDAO implements ImageDAO {
         Statement stmt = null;
         ResultSet rs = null;
 
-        String sql = "SELECT * FROM IMAGENES_HABITACION WHERE HABITACION_ID_FK = "+hotelId;
+        String sql = "SELECT * FROM imagenes_hotel WHERE hotel_id_fk = "+hotelId;
 
         List<ImageHotel> imagenesHotel = new ArrayList<ImageHotel>();
 
