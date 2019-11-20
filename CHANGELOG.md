@@ -1,13 +1,13 @@
 
 # ChangeLog del proyecto
 
-## v1.0.2
+## [v1.0.2](https://git.tec.siua.ac.cr/emjimenez/proyecto_diseno/tree/master)
 
 21-11-2019
 # Fixes
 - ⭐  Se arreglaron algunos errores de seguridad referentes a las urls.
 
-## v1.0.1
+## [v1.0.1](https://git.tec.siua.ac.cr/emjimenez/proyecto_diseno/tree/master)
 
 20-11-2019
 
