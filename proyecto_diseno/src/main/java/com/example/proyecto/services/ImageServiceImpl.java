@@ -6,12 +6,8 @@ import com.example.proyecto.modelo.ImageHotel;
 import com.example.proyecto.modelo.ImageRoom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
-import java.awt.*;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.List;
+import java.util.ArrayList;
 
 @Service
 public class ImageServiceImpl implements ImageService {
@@ -20,13 +16,8 @@ public class ImageServiceImpl implements ImageService {
     ImageDAO ImageDAO;
 
     @Override
-    public Image insert(InputStream imput) {
-        return null;
-    }
+    public ArrayList<ImageRoom> retrieveRoomImages(int roomId) {return ImageDAO.findByRoomId(roomId);}
 
     @Override
-    public List<ImageRoom> retrieveRoomImages(int roomId) {return ImageDAO.findByRoomId(roomId);}
-
-    @Override
-    public List<ImageHotel> retrieveHotelImages(int hotelId) {return ImageDAO.findByHotelId(hotelId);}
+    public ArrayList<ImageHotel> retrieveHotelImages(int hotelId) {return ImageDAO.findByHotelId(hotelId);}
 }

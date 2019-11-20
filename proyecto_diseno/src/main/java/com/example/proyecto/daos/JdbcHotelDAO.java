@@ -38,11 +38,11 @@ public class JdbcHotelDAO implements HotelDAO {
             while (rs.next()) {
 
                 ImageHotel h = new ImageHotel();
-                h.setRegion(rs.getString(1));
-                h.setScore(rs.getFloat(2));
-                h.setName(rs.getString(3));
+                //h.setRegion(rs.getString(1));
+                //h.setScore(rs.getFloat(2));
+                //h.setName(rs.getString(3));
                 h.setHotelId(rs.getInt(4));
-                h.setCountry(rs.getString(5));
+                //h.setCountry(rs.getString(5));
                 h.setId(rs.getInt(6));
                 h.setPath(rs.getString(7));
 

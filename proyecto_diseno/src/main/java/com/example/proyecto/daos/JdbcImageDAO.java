@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
 import com.example.proyecto.modelo.Conexion;
 import com.example.proyecto.modelo.ImageHotel;
@@ -15,14 +14,14 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class JdbcImageDAO implements ImageDAO {
     @Override
-    public List<ImageRoom> findByRoomId(int roomId) {
+    public ArrayList<ImageRoom> findByRoomId(int roomId) {
         Connection con = null;
         Statement stmt = null;
         ResultSet rs = null;
 
         String sql = "SELECT * FROM imagenes_habitacion WHERE habitacion_id_fk = "+roomId;
 
-        List<ImageRoom> imagenesHabitacion = new ArrayList<ImageRoom>();
+        ArrayList<ImageRoom> imagenesHabitacion = new ArrayList<ImageRoom>();
 
         try {
             con = Conexion.conectar();
@@ -46,14 +45,14 @@ public class JdbcImageDAO implements ImageDAO {
     }
 
     @Override
-    public List<ImageHotel> findByHotelId(int hotelId) {
+    public ArrayList<ImageHotel> findByHotelId(int hotelId) {
         Connection con = null;
         Statement stmt = null;
         ResultSet rs = null;
 
         String sql = "SELECT * FROM imagenes_hotel WHERE hotel_id_fk = "+hotelId;
 
-        List<ImageHotel> imagenesHotel = new ArrayList<ImageHotel>();
+        ArrayList<ImageHotel> imagenesHotel = new ArrayList<ImageHotel>();
 
         try {
             con = Conexion.conectar();
