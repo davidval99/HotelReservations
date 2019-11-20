@@ -1,31 +1,15 @@
 <template>
   <div id="app">
 
-    <FormularioHotel mensajeFormulario="Bienvenido a la página de reservas"/>
-    <TituloElegir mensajeElegir="Bienvenido a la página para elegir el hotel"/>
-    <Main mensajeMain="Pagina Principal"/>
-    <Reservaciones mensajeReservaciones="Reserve su hotel ya"/>
-    <Confirmacion mensajeReservaciones="Confirme su reservacion"/>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import TituloElegir from './components/ElegirHotel.vue'
-import FormularioHotel from './components/FormularioHotel.vue'
-import Main from './components/Main.vue'
-import Reservaciones from './components/Reservaciones.vue'
-import Confirmacion from './components/Confirmacion.vue'
 
 export default {
-  name: 'app',
-  components: {
-    FormularioHotel,
-    TituloElegir,
-    Main,
-    Reservaciones,
-    Confirmacion
+  name: 'app'
   }
-}
 </script>
 
 <style>
