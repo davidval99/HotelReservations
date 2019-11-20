@@ -16,6 +16,15 @@ El proyecto es una aplicación de hoteles creada con spring-boot y vue.js
 - Se debe configurar correctamente el sdk e instalar las dependencias de maven correctas. 
 - Disfrutar de la aplicación.
 
+# Componentes
+
+| Nombre del componente | Para qué sirve |
+| ------ | ------ |
+| Daos | Sirve para poder hacer consultas a la base de datos |
+| Service | Sirve como una clase para la lógica del programa |
+| Controller | Es el componente para poder hacer funciones REST |
+| Modelo | Es el objeto que se utilizará durante todo el programa |
+
 
 # ¿Qué hace la aplicación?
 
@@ -78,3 +87,18 @@ Finalmente se deben correr los siguientes comandos para poder correr el programa
 $ cd C:\Users\{NombreDeUsuario}\Downloads\develop\proyecto_diseno\target
 $ java -jar {NombreDelJar}.jar 
 ```
+# Problemas conocidos
+
+Existen varios problemas con respecto a la instalación del proyecto, entre estos están:
+
+- Spring mal configurado.
+- Sdk mal configurado.
+- El main no se encuentra `Error: Could not find or load main class libTest`, para solucionar esto se debe eliminar la carpeta .idea o sino reconstruir el proyecto como un maven.
+
+# Referencias 
+
+| Información | Link |
+| ------ | ------ |
+|Cómo crear ejecutables|https://stackoverflow.com/questions/33593111/intellij-spring-boot-how-to-create-an-executable-jar|
+|Cómo utilizar Spring|https://www.youtube.com/watch?v=35EQXmHKZYs|
+|Cómo hacer Post y Gets |https://www.baeldung.com/spring-rest-template-list|
