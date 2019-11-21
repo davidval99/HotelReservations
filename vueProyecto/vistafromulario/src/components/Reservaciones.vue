@@ -14,9 +14,9 @@
             <td>Fecha de Salida</td>
         </tr>
             <tr>
-                <td>{{reservation.user}}</td>
-                <td>{{reservation.hotel}}</td>
-                <td>{{reservation.room}}</td>
+                <td>{{reservation.name}} {{reservation.lastName}} {{reservation.lastName2}}</td>
+                <td>{{reservation.nameHotel}}</td>
+                <td>{{reservation.roomType}}</td>
                 <td>{{reservation.checkInDate}}</td>
                 <td>{{reservation.checkOutDate}}</td>
             </tr>
@@ -48,8 +48,8 @@ export default {
 
   },
    created() {
-       this.$http.get('http://www.json-generator.com/api/json/get/bUFQTgqmqa?indent=2').then(function(data){
-       this.reservations = data.body;
+       this.$http.get('http://localhost:8080/listarReservaciones').then(function(data){
+            this.reservations = data.body;
        })
     }
 }

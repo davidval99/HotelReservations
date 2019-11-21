@@ -10,8 +10,11 @@ import HotelesTodos from './components/HotelesTodos.vue'
 import HotelesPuntuacion from './components/HotelesPuntuacion.vue'
 import HotelesPais from './components/HotelesPais.vue'
 import HotelesRegion from './components/HotelesRegion.vue'
-import Habitacion from './components/Habitacion.vue'
 import VueResource from 'vue-resource'
+import HabitacionIndividual from './components/HabitacionIndividual.vue'
+import HabitacionDoble from './components/HabitacionDoble.vue'
+import HabitacionFamiliar from './components/HabitacionFamiliar.vue'
+
 
 Vue.use(VueResource);
 Vue.use(VueRouter);
@@ -28,7 +31,9 @@ const routes = [
     { path: '/hotelesPuntuacion', component: HotelesPuntuacion},
     { path: '/hotelesPais', component: HotelesPais},
     { path: '/hotelesRegion', component: HotelesRegion},
-    { path: '/habitacion', component: Habitacion}
+    { path: '/habitacionIndividual', component: HabitacionIndividual},
+    { path: '/habitacionDoble', component: HabitacionDoble},
+    { path: '/habitacionFamiliar', component: HabitacionFamiliar}
 ];
 
 const router = new VueRouter({

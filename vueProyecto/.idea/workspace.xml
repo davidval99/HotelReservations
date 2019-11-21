@@ -11,6 +11,10 @@
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
   </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/vistafromulario" />
   </component>
@@ -20,15 +24,25 @@
   <component name="ProjectId" id="1SrlLshnt7HOc1eeySWUvm73dSN" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../proyecto_diseno" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Fabrizio\Desktop\vueProyecto\vistafromulario\public" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Emanuelle\Desktop\vueProyecto\vistafromulario\src\components" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Fabrizio\Desktop\vueProyecto\vistafromulario\public" />
+      <recent name="C:\Users\Fabrizio\Desktop\vueProyecto\vistafromulario\src\assets" />
+      <recent name="C:\Users\Usuario\Desktop\vueProyecto\vistafromulario\src\components" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -56,8 +70,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1572329542524</updated>
+      <workItem from="1574233293420" duration="4407000" />
+      <workItem from="1574265899695" duration="16411000" />
+      <workItem from="1574293025164" duration="2919000" />
     </task>
     <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="23737000" />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.js" />
@@ -70,6 +93,20 @@
             <State>
               <option name="COLUMN_ORDER" />
             </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
           </value>
         </entry>
       </map>
