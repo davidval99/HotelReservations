@@ -17,12 +17,12 @@ public class ReservationServiceImpl implements ReservationService {
     ReservationDAO ReservationDAO;
 
     @Override
-    public Optional<Reservation> CreateReservation(int room, int userId, String checkInDate, String checkOutDate, int creditCard) {
+    public String CreateReservation(int room, int userId, Date checkInDate, Date checkOutDate, long creditCard) {
         Reservation reservation = new Reservation();
         reservation.setRoomId(room);
         reservation.setUserId(userId);
-        //reservation.setCheckInDate(checkInDate);
-        //reservation.setCheckOutDate(checkOutDate);
+        reservation.setCheckInDate(checkInDate);
+        reservation.setCheckOutDate(checkOutDate);
         reservation.setCreditCardNumber(creditCard);
         return ReservationDAO.CreateReservation(reservation);
     }

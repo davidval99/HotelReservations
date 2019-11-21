@@ -155,10 +155,4 @@
       </map>
     </option>
   </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/blog$All_in_blog__1_.ic" NAME="All in blog (1) Coverage Results" MODIFIED="1573453076688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/blog$ProyectoDisenoApplication.ic" NAME="ProyectoDisenoApplication Coverage Results" MODIFIED="1573454837274" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>com.example.proyecto.*</FILTER>
-    </SUITE>
-  </component>
 </project>
