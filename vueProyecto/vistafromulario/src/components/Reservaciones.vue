@@ -1,50 +1,55 @@
 <template>
 
-  <div class="reservaciones">
+  <div >
   <Header />
-  <br><br><br><br>
-  <h1>{{ mensajeReservaciones }}</h1>
-  <br>
-    <table style="width:100%">
-      <tr>
-        <th>Hotel</th>
-        <th>Habitacion</th>
-        <th>Usuario</th>
-        <th>Fecha entrada</th>
-        <th>Fecha salida</th>
-      </tr>
-      <tr>
-        <td>         </td>
-        <td>         </td>
-        <td>         </td>
-        <td>         </td>
-        <td>         </td>
-      </tr>
-       <tr>
-              <td>         </td>
-              <td>         </td>
-              <td>         </td>
-              <td>         </td>
-              <td>         </td>
-       </tr>
-    </table>
-    <br><br><br><br>
+
+    <div id="show-blogs" v-for="reservation in reservations" :key="reservation.id">
+        <h1>Reservaciones</h1>
+        <table style="width:100%">
+        <tr>
+            <td>Usuario</td>
+            <td>Hotel</td>
+            <td>Fecha de Entrada</td>
+            <td>Fecha de Salida</td>
+        </tr>
+            <tr>
+                <td>{{reservation.name}} {{reservation.lastName}} {{reservation.lastName2}}</td>
+                <td>{{reservation.nameHotel}}</td>
+                <td>{{reservation.checkInDate}}</td>
+                <td>{{reservation.checkOutDate}}</td>
+            </tr>
+        </table>
+    </div>
+
   <Footer />
   </div>
 </template>
 
 <script>
+
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
 
 export default {
+  name: 'Reservaciones',
   components: {
         Header,
         Footer
   },
-     props: {
-       mensajeReservaciones: String
-     }
+
+  data(){
+    return {
+        reservations : []
+    }
+  },
+  methods: {
+
+  },
+   created() {
+       this.$http.get('http://localhost:8080/listarReservaciones').then(function(data){
+       this.reservations = data.body;
+       })
+    }
 }
 
 </script>
@@ -56,8 +61,6 @@ table, th, td {
 }
 th, td {
   padding: 5px;
-}
-th {
   text-align: left;
 }
 </style>
