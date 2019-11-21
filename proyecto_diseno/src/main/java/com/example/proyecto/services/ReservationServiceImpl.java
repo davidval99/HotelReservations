@@ -5,6 +5,7 @@ import com.example.proyecto.modelo.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -16,22 +17,17 @@ public class ReservationServiceImpl implements ReservationService {
     ReservationDAO ReservationDAO;
 
     @Override
-    public Optional<Reservation> CreateReservation(int room, int userId, Date checkInDate, Date checkOutDate, int creditCard) {
+    public Optional<Reservation> CreateReservation(int room, int userId, String checkInDate, String checkOutDate, int creditCard) {
         Reservation reservation = new Reservation();
         reservation.setRoomId(room);
         reservation.setUserId(userId);
-        reservation.setCheckInDate(checkInDate);
-        reservation.setCheckOutDate(checkOutDate);
+        //reservation.setCheckInDate(checkInDate);
+        //reservation.setCheckOutDate(checkOutDate);
         reservation.setCreditCardNumber(creditCard);
         return ReservationDAO.CreateReservation(reservation);
     }
 
     @Override
-    public Reservation update(Date checkInDate, Date checkOutDate) {
-        return null;
-    }
-
-    @Override
-    public List<Reservation> findBy(){return ReservationDAO.findBy();}
+    public ArrayList<Reservation> findBy(){return ReservationDAO.findBy();}
 
 }

@@ -9,7 +9,7 @@ public class Hotel {
     private float  score;
     private String country;
     private String region;
-    private ArrayList<String> roomType;
+    private String roomType;
 
     public void setId(int id) {
         this.id = id;
@@ -51,11 +51,11 @@ public class Hotel {
         return region;
     }
 
-    public void setRoomType(ArrayList<String> roomType) {
+    public void setRoomType(String roomType) {
         this.roomType = roomType;
     }
 
-    public ArrayList<String> getRoomType() {
+    public String getRoomType() {
         return roomType;
     }
 

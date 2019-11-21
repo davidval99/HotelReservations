@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
 
@@ -20,34 +21,10 @@ public class ReservationController {
     @Autowired
     ReservationService ReservationService;
 
-    @Autowired
-    private static final Logger logger = LoggerFactory.getLogger(ReservationController.class);
-
-
-    @GetMapping(value="/listarReservaciones")
-    public String listar(){return ReservationService.findBy().toString();}
-
-    @GetMapping(value = "/conexion")
-    public String conexion(){
-
-        Connection c = null;
-        try {
-            Class.forName("org.postgresql.Driver");
-            c = DriverManager
-                    .getConnection("jdbc:postgresql://localhost:5432/postgres",
-                            "postgres", "root");
-        } catch (Exception e) {
-            return e.getClass().getName()+": "+e.getMessage();
-
-        }
-        return "Opened database successfully";
+    @RequestMapping(value = "/listarReservaciones", method = RequestMethod.GET)
+    public @ResponseBody ArrayList<Reservation> listar(){
+        return ReservationService.findBy();
     }
-
-
-
-    @GetMapping(value = "/")
-    public String prueba(){return "esto es una prueba";}
-
 
     @RequestMapping(path = "/createReservation", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
@@ -62,10 +39,6 @@ public class ReservationController {
         int creditCard;
         */
         return Integer.toString(postDto.getUserId()) + postDto.getName() + postDto.getLastName() + postDto.getEmail() +  Integer.toString(postDto.getCreditCard());
-    }
-    @PostMapping(value = "/updateReservation")
-    public String UpdateReservation(@RequestBody PostDto post){
-        return "post";
     }
 
 }

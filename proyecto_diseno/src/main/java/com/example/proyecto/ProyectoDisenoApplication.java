@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.jms.JndiConnectionFactoryAutoConfi
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration;
 
+
 @EnableAutoConfiguration (exclude = {JndiConnectionFactoryAutoConfiguration.class, DataSourceAutoConfiguration.class,
 		HibernateJpaAutoConfiguration.class, JpaRepositoriesAutoConfiguration.class,
 		DataSourceTransactionManagerAutoConfiguration.class, SecurityAutoConfiguration.class })
