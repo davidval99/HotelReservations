@@ -13,6 +13,7 @@ public class PostDto {
     String checkInDate;
     String checkOutDate;
     long creditCard;
+    
 
     public PostDto(){}
 
