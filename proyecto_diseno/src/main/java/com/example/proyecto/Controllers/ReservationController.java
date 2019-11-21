@@ -21,7 +21,7 @@ public class ReservationController {
     @Autowired
     ReservationService ReservationService;
 
-    @RequestMapping(value = "listarReservacione/", method = RequestMethod.GET)
+    @RequestMapping(value = "/listarReservaciones", method = RequestMethod.GET)
     public @ResponseBody ArrayList<Reservation> listar(){
         return ReservationService.findBy();
     }

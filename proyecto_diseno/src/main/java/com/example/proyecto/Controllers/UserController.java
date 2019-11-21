@@ -5,8 +5,8 @@ import com.example.proyecto.modelo.ImageHotel;
 import com.example.proyecto.modelo.User;
 import com.example.proyecto.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.*;
 import java.text.ParseException;
@@ -20,21 +20,19 @@ public class UserController {
     @Autowired
     UserService UserService;
 
-    @GetMapping(value = "/createUser")
-    public String createUser(){return UserService.createUser(new User()).toString();}
-
     @GetMapping(value = "/returnAllUser")
     public String returnAllUser(){return UserService.returnAllUser().toString();}
 
-    @GetMapping(value = "/returnUserDate")
-    public String returnUserDate() throws ParseException {
+
+    @RequestMapping(value = "/returnUserDate", method = RequestMethod.GET)
+    public @ResponseBody ArrayList<User> returnUserDate() throws ParseException {
         String pattern = "yyyy-MM-dd";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         Date inicio = simpleDateFormat.parse("12-01-2018");
         Date fin = simpleDateFormat.parse("12-01-2018");
 
 
-        return UserService.returnUserDate(inicio, fin).toString();
+        return UserService.returnUserDate(inicio, fin);
     }
 
 }
