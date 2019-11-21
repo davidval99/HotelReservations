@@ -3,41 +3,42 @@ package com.example.proyecto.modelo;
 import java.util.Objects;
 
 public class Room {
-    private String id;
-    private String type;
-    private boolean available;
 
-    public String getId() {
-        return id;
+    private int habitacion_id;
+    private int precio;
+    private String tipo_id;
+    private int hotel_id;
+
+    public int getHabitacion_id() {
+        return habitacion_id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public int getPrecio() {
+        return precio;
     }
 
-    public String getType() {
-        return type;
+    public String getTipo_id() {
+        return tipo_id;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public int getHotel_id() {
+        return hotel_id;
     }
 
-    public boolean isAvailable() {
-        return available;
+    public void setHabitacion_id(int habitacion_id) {
+        this.habitacion_id = habitacion_id;
     }
 
-    public void setAvailable(boolean available) {
-        this.available = available;
+    public void setPrecio(int precio) {
+        this.precio = precio;
     }
 
-    @Override
-    public String toString() {
-        return "Room{" +
-                "id='" + id + '\'' +
-                ", type='" + type + '\'' +
-                ", available=" + available +
-                '}';
+    public void setTipo_id(String tipo_id) {
+        this.tipo_id = tipo_id;
+    }
+
+    public void setHotel_id(int hotel_id) {
+        this.hotel_id = hotel_id;
     }
 
     @Override
@@ -45,9 +46,14 @@ public class Room {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Room room = (Room) o;
-        return available == room.available &&
-                Objects.equals(id, room.id) &&
-                Objects.equals(type, room.type);
+        return habitacion_id == room.habitacion_id &&
+                precio == room.precio &&
+                tipo_id == room.tipo_id &&
+                hotel_id == room.hotel_id;
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(habitacion_id, precio, tipo_id, hotel_id);
+    }
 }

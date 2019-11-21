@@ -26,8 +26,7 @@ public class JdbcHotelDAO implements HotelDAO {
         Connection co = null;
         Statement stm= null;
         ResultSet rs=null;
-        String sql="Select *\n" +
-                "from hotel h, imagenes_hotel ih\n" +
+        String sql="Select * from hotel h, imagenes_hotel ih\n" +
                 "where h.hotel_id = ih.hotel_id_fk";
         ArrayList<ImageHotel> resultado = new ArrayList<>();
 

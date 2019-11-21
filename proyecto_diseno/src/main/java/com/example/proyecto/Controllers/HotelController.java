@@ -22,9 +22,9 @@ public class HotelController {
     @Autowired
     HotelServiceImpl hotelService;
 
-    @RequestMapping(value = "/listHotels", method = RequestMethod.GET)
-    public @ResponseBody ArrayList<Hotel> listarHoteles(){
-        return hotelService.listAllHotels();
+    @RequestMapping(value = "/index")
+    public void mostrar(){
+        return;
     }
 
     @RequestMapping(value = "/listHotelsPuntuation", method = RequestMethod.GET)
@@ -42,7 +42,7 @@ public class HotelController {
         return hotelService.listAllHotelsByRegion();
     }
 
-    @RequestMapping(value = "/listHotelsImage", method = RequestMethod.GET)
+    @RequestMapping(value = "/listHotels", method = RequestMethod.GET)
     public @ResponseBody ArrayList<ImageHotel> listAllHotelsImage(){
         return hotelService.listAllHotelsImage();
     }

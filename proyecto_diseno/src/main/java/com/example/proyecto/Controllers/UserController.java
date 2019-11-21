@@ -5,8 +5,8 @@ import com.example.proyecto.modelo.ImageHotel;
 import com.example.proyecto.modelo.User;
 import com.example.proyecto.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.*;
 import java.text.ParseException;
@@ -20,21 +20,17 @@ public class UserController {
     @Autowired
     UserService UserService;
 
-    @GetMapping(value = "/createUser")
-    public String createUser(){return UserService.createUser(new User()).toString();}
-
     @GetMapping(value = "/returnAllUser")
-    public String returnAllUser(){return UserService.returnAllUser().toString();}
+    public ArrayList<User> returnAllUser(){return UserService.returnAllUser();}
 
-    @GetMapping(value = "/returnUserDate")
-    public String returnUserDate() throws ParseException {
+    @RequestMapping(value = "/returnUserDate/{Date1}/{Date2}", method = RequestMethod.GET)
+    public @ResponseBody ArrayList<User> returnUserDate(@PathVariable("Date1")String dateInicio, @PathVariable("Date2")String dateFinal) throws ParseException {
         String pattern = "yyyy-MM-dd";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-        Date inicio = simpleDateFormat.parse("12-01-2018");
-        Date fin = simpleDateFormat.parse("12-01-2018");
+        Date inicio = simpleDateFormat.parse(dateInicio);
+        Date fin = simpleDateFormat.parse(dateFinal);
 
-
-        return UserService.returnUserDate(inicio, fin).toString();
+        return UserService.returnUserDate(inicio, fin);
     }
 
 }
