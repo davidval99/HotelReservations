@@ -5,7 +5,11 @@
   <Header />
 
     <div id="show-hotels" v-for="hotel in hotels" :key="hotel.id">
+<<<<<<< HEAD
+        <h1><a href="javascript:void(0)" v-on:click="goToHotel(hotel.id)">{{hotel.name}}</a></h1>
+=======
         <h1><a href="javascript:void(0)" v-on:click="goToHotel(hotel.HotelId)">{{hotel.name}}</a></h1>
+>>>>>>> develop
         <table style="width:100%">
         <tr>
             <td>Puntuacion</td>
@@ -74,7 +78,11 @@ export default {
             this.room = data.body;
         });
 
+<<<<<<< HEAD
+        this.$http.get('http://www.json-generator.com/api/json/get/bVKSVzMguq?indent=2').then(function(data){
+=======
         this.$http.get('http://localhost:8080/listHotels').then(function(data){
+>>>>>>> develop
                     this.hotels = data.body;
         });
    },

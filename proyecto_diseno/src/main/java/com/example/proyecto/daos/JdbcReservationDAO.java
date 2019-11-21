@@ -11,10 +11,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Optional;
+import java.sql.Date;
+import java.util.*;
 
 @Repository
 public class JdbcReservationDAO implements ReservationDAO {
@@ -23,27 +21,29 @@ public class JdbcReservationDAO implements ReservationDAO {
     @Override
     //Este metodo crea una nueva reservacion
     //Recibe un objeto de tipo Reservation y lo desmenusa para insertar a la base de datos
-    public Optional<Reservation> CreateReservation(Reservation reserva) {
+    public String CreateReservation(Reservation reserva) {
 
         Connection co = null;
-        String sql="INSERT INTO reserva(habitacion_id_fk,usuario_id_fk,fecha_inicio,fecha_fin) VALUES(?,?,?,?);";
+        String sql="INSERT INTO reserva(reserva_id,habitacion_id_fk,usuario_id_fk,fecha_inicio,fecha_fin) VALUES(?, ?,?,?,?);";
         try{
             co = Conexion.conectar();
             PreparedStatement pstm = co.prepareStatement(sql);
-            pstm.setInt(1,reserva.getRoomId());
-            pstm.setInt(2,reserva.getUserId());
-            pstm.setDate(3, (Date) reserva.getCheckInDate());
-            pstm.setDate(4, (Date) reserva.getCheckOutDate());
+            long generatedLong = Math.abs(new Random().nextLong());
+
+            pstm.setLong(1,generatedLong);
+            pstm.setInt(2,1);
+            pstm.setInt(3,reserva.getUserId());
+            pstm.setDate(4, (Date) reserva.getCheckInDate());
+            pstm.setDate(5, (Date) reserva.getCheckOutDate());
+            System.out.println(pstm);
             pstm.executeUpdate();
-            System.out.print(sql);
             pstm.close();
             co.close();
         }
         catch(SQLException e){
-            System.out.println("No se pudo insertar la reservacion");
-            e.printStackTrace();
+            return "Error al insertar";
         }
-        return Optional.empty();
+        return "Se insertó correctamente";
 
     }
     @Override

@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface ReservationService {
 
-    public Optional<Reservation> CreateReservation(int room, int userId, String checkInDate, String checkOutDate, int creditCard);
+    public String CreateReservation(int room, int userId, Date checkInDate, Date checkOutDate, long creditCard);
 
     public ArrayList<Reservation> findBy();
 

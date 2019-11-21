@@ -14,7 +14,7 @@ import java.util.Optional;
 
 public interface ReservationDAO {
 
-    public Optional<Reservation> CreateReservation(Reservation reserva);
+    public String CreateReservation(Reservation reserva);
 
     public ArrayList<Reservation> findBy();
 

@@ -49,7 +49,11 @@ export default {
   },
    created() {
        this.$http.get('http://localhost:8080/listarReservaciones').then(function(data){
+<<<<<<< HEAD
+       this.reservations = data.body;
+=======
             this.reservations = data.body;
+>>>>>>> develop
        })
     }
 }

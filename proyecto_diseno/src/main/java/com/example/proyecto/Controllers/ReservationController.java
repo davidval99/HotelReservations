@@ -10,9 +10,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Optional;
 
 @RestController
@@ -21,14 +21,15 @@ public class ReservationController {
     @Autowired
     ReservationService ReservationService;
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @RequestMapping(value = "/listarReservaciones", method = RequestMethod.GET)
     public @ResponseBody ArrayList<Reservation> listar(){
         return ReservationService.findBy();
     }
 
-    @RequestMapping(path = "/createReservation", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public String createReservation(@RequestBody  PostDto postDto) {
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @PostMapping(value = "/createReservation", produces = "application/json", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody String createReservation(@RequestBody PostDto postDto) {
         /*
         int userId;
         String name;
@@ -38,7 +39,11 @@ public class ReservationController {
         Date checkOutDate;
         int creditCard;
         */
-        return Integer.toString(postDto.getUserId()) + postDto.getName() + postDto.getLastName() + postDto.getEmail() +  Integer.toString(postDto.getCreditCard());
+        Date date1= Date.valueOf(postDto.getCheckInDate());
+        Date date2= Date.valueOf(postDto.getCheckOutDate());
+        System.out.println(Integer.toString(postDto.getUserId()) + postDto.getName() + postDto.getLastName() + postDto.getEmail() +  Long.toString(postDto.getCreditCard()));
+
+        return ReservationService.CreateReservation(0,postDto.userId,date1,date2,postDto.creditCard);
     }
 
 }

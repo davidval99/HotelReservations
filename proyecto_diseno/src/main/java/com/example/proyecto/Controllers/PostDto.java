@@ -10,13 +10,14 @@ public class PostDto {
     String name;
     String lastName;
     String email;
-    Date checkInDate;
-    Date checkOutDate;
-    int creditCard;
+    String checkInDate;
+    String checkOutDate;
+    long creditCard;
+
 
     public PostDto(){}
 
-    public PostDto(int userId, String name, String lastName, String email, Date checkInDate, Date checkOutDate, int creditCard) {
+    public PostDto(int userId, String name, String lastName, String email, String checkInDate, String checkOutDate, int creditCard) {
         this.userId = userId;
         this.name = name;
         this.lastName = lastName;
@@ -58,27 +59,27 @@ public class PostDto {
         this.email = email;
     }
 
-    public Date getCheckInDate() {
+    public String getCheckInDate() {
         return checkInDate;
     }
 
-    public void setCheckInDate(Date checkInDate) {
+    public void setCheckInDate(String checkInDate) {
         this.checkInDate = checkInDate;
     }
 
-    public Date getCheckOutDate() {
+    public String getCheckOutDate() {
         return checkOutDate;
     }
 
-    public void setCheckOutDate(Date checkOutDate) {
+    public void setCheckOutDate(String checkOutDate) {
         this.checkOutDate = checkOutDate;
     }
 
-    public int getCreditCard() {
+    public long getCreditCard() {
         return creditCard;
     }
 
-    public void setCreditCard(int creditCard) {
+    public void setCreditCard(long creditCard) {
         this.creditCard = creditCard;
     }
 }
