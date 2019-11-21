@@ -1,8 +1,8 @@
 <template>
   <footer class="footer">
-      <h1>Posted by: B & B Hotels</h1>
+      <h1>Posted by: MalianTECS Hoteles</h1>
       <h1>Contact information: <a href="mailto:someone@example.com">
-      someone@example.com</a>.</h1>
+      malianTECS.hotels@gmail.co.cr</a></h1>
   </footer>
 </template>
 
