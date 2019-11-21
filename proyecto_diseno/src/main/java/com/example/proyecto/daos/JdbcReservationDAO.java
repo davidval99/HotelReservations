@@ -96,13 +96,13 @@ public class JdbcReservationDAO implements ReservationDAO {
     }
     @Override
     //Este metodo nos retorna el arreglo con las reservaciones existentes en la base de de datos
-    public List<Reservation> findBy() {
+    public ArrayList<Reservation> findBy() {
         Connection co = null;
         Statement stm= null;
         ResultSet rs=null;
 
         String sql="SELECT r.reserva_id, r.habitacion_id_fk, r.fecha_inicio, r.fecha_fin, u.nombre, u.apellido1, u.apellido2, u.correo,u.num_tarjeta FROM reserva r inner join usuario u on r.usuario_id_fk = u.usuario_id;";
-        List<Reservation> listaReserva= new ArrayList<Reservation>();
+        ArrayList<Reservation> listaReserva= new ArrayList<Reservation>();
 
         try {
             co = Conexion.conectar();

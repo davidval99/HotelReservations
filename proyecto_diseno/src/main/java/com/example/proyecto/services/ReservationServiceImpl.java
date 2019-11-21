@@ -5,6 +5,7 @@ import com.example.proyecto.modelo.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -27,11 +28,6 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public Reservation update(Date checkInDate, Date checkOutDate) {
-        return null;
-    }
-
-    @Override
-    public List<Reservation> findBy(){return ReservationDAO.findBy();}
+    public ArrayList<Reservation> findBy(){return ReservationDAO.findBy();}
 
 }

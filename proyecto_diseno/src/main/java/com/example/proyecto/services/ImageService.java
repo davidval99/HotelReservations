@@ -2,18 +2,19 @@ package com.example.proyecto.services;
 
 
 import com.example.proyecto.daos.ImageDAO;
+import com.example.proyecto.modelo.ImageHotel;
+import com.example.proyecto.modelo.ImageRoom;
 
-import java.awt.*;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.util.ArrayList;
 
 
 public interface ImageService {
 
     ImageDAO ImageDAO = null;
 
-    public Image insert(InputStream imput);
+    public ArrayList<ImageRoom> retrieveRoomImages(int roomId);
 
-    public OutputStream retrive(int imageId);
+    public ArrayList<ImageHotel> retrieveHotelImages(int hotelId);
+
 
 }
