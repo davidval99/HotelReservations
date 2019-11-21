@@ -2,7 +2,7 @@
   <footer class="footer">
       <h1>Posted by: MalianTECS Hoteles</h1>
       <h1>Contact information: <a href="mailto:someone@example.com">
-      malianTECS.hotels@gmail.co.cr</a></h1>
+      MalianTECS.hotels@gmail.co.cr</a></h1>
   </footer>
 </template>
 

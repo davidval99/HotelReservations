@@ -20,6 +20,7 @@ public class RoomController {
     @Autowired
     com.example.proyecto.services.RoomService RoomService;
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @RequestMapping(value = "/RoomFindById/{id}", method = RequestMethod.GET)
     public @ResponseBody Room findById(@PathVariable("id") int id) {
 
@@ -27,6 +28,7 @@ public class RoomController {
         return RoomService.findByID(id);
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @RequestMapping(value = "/findAvailable/{id}/{d1}/{d2}", method = RequestMethod.GET)
     public @ResponseBody Boolean isAvailable(@PathVariable("id") int id, @PathVariable("d1")  String d1, @PathVariable("d2") String d2) throws ParseException {
         System.out.println();
@@ -37,6 +39,7 @@ public class RoomController {
         return RoomService.isAvailable(id,date1,date2);
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @RequestMapping(value = "/listAllRooms", method = RequestMethod.GET)
     public @ResponseBody ArrayList<Room> listAllRooms(){
         return RoomService.listAllRooms();

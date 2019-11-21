@@ -20,9 +20,11 @@ public class UserController {
     @Autowired
     UserService UserService;
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping(value = "/returnAllUser")
     public ArrayList<User> returnAllUser(){return UserService.returnAllUser();}
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @RequestMapping(value = "/returnUserDate/{Date1}/{Date2}", method = RequestMethod.GET)
     public @ResponseBody ArrayList<User> returnUserDate(@PathVariable("Date1")String dateInicio, @PathVariable("Date2")String dateFinal) throws ParseException {
         String pattern = "yyyy-MM-dd";

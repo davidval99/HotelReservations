@@ -1,40 +1,36 @@
 <template>
   <div>
-
    <Header />
         <h1>Confirmacion de reservacion:</h1>
         <br><br><br>
         <div id="confirm-reservation">
              Nombre del usuario:
-             <label>Juan</label>
+             <label>{{reserva.nombre}} {{reserva.apellido1}} {{reserva.apellido2}}</label>
              <br><br>
 
              Fecha de nacimiento:
-             <label>10-10-1999</label>
+             <label>{{reserva.fecha}}</label>
              <br><br>
 
              Correo electronico:
-             <label>ex@gmail.com</label>
+             <label>{{reserva.email}}</label>
              <br><br>
 
              Numero de tarjeta de credito:
-             <label>1234</label>
+             <label>{{reserva.tarjeta}}</label>
              <br><br>
 
              Fecha de check-in:
-             <label>2018-12-28</label>
+             <label>{{fechas.fechaini}}</label>
              <br><br>
 
              Fecha de check-out:
-             <label>2018-12-31</label>
+             <label>{{fechas.fechafin}}</label>
              <br><br>
 
              <br><br><br><br>
-             <button v-on:click.prevent="post">Realizar Reservacion</button>
+            <button name="button" v-on:click="confirmar"> Reservar </button>
              <br><br><br><br>
-         </div>
-         <div v-if="estado">
-            <label>OK</label>
          </div>
     <Footer />
   </div>
@@ -56,32 +52,44 @@ export default {
 
   data() {
     return {
-        reservation: {
+
+        reservaPost : {
+
             nombre: "",
-            primerApellido: "",
-            segundoApellido: "",
-            fecha: "",
+            apellido: "",
             correo: "",
-            tarjeta: "",
             fechaIn: "",
             fechaOut: "",
+            tarjeta: ""
         },
-        estado: false
+
+        fechas: JSON.parse(localStorage.getItem("fechas")),
+        hotel: JSON.parse(localStorage.getItem("selectedHotel")),
+        habitacion: JSON.parse(localStorage.getItem("selectedRoom")),
+        reserva: JSON.parse(localStorage.getItem("reserva")),
     }
   },
 
   methods: {
 
-        post: function() {
+      confirmar: function () {
 
-            this.$http.post('http://localhost:8080/createReservation', {
-                name: this.reservation.nombre,
-                email: this.reservation.correo,
-                creditCardNumber: this.reservation.tarjeta,
-                checkInDate: this.reservation.fechaIn,
-                checkOutDate: this.reservation.fechaOut
-            }, this.estado=true);
-        }
+        this.reservaPost.nombre = this.reserva.nombre,
+        this.reservaPost.apellido = this.reserva.apellido1,
+        this.reservaPost.correo = this.reserva.email,
+        this.reservaPost.fechaIn = this.fechas.fechaini,
+        this.reservaPost.fechaOut = this.fechas.fechafin,
+        this.reservaPost.tarjeta = this.reserva.tarjeta,
+
+        this.$http.post('http://www.json-generator.com/api/json/get/cemCyNSvuG?indent=2', this.reservaPost).then(
+              function() {
+              alert("Reserva realizada correctamente.")
+            },
+            function() {
+                alert("No se pudo hacer la reserva correctamente.")
+        })
+        window.location.href=""
+      }
   }
 }
 </script>

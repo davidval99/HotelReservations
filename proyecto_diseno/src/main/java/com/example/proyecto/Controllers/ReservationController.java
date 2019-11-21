@@ -21,11 +21,13 @@ public class ReservationController {
     @Autowired
     ReservationService ReservationService;
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @RequestMapping(value = "/listarReservaciones", method = RequestMethod.GET)
     public @ResponseBody ArrayList<Reservation> listar(){
         return ReservationService.findBy();
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @RequestMapping(path = "/createReservation", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public String createReservation(@RequestBody  PostDto postDto) {

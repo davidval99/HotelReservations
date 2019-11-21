@@ -7,9 +7,9 @@
 
         <td><label>Nombre:</label>
         <br>
-        <input type="text" name="filtro">
+        <input type="text" v-model="nombreHotel.nombre" name="filtro">
         <br><br>
-        <button><router-link to="elegirHotel">Buscar</router-link></button></td>
+        <button v-on:click="buscarHotel">Buscar</button></td>
 
         <td><label>Filtros:</label>
         <br>
@@ -39,17 +39,41 @@ import Footer from './Footer/Footer';
 
 export default {
 
-  data() {
-
-  },
-
   components: {
         Header,
         Footer
   },
 
+    data() {
+
+        return {
+            hotels : [],
+            nombreHotel : {
+                nombre: ""
+            },
+            habitacion: JSON.parse(localStorage.getItem("selectedRoom")),
+            hotel: JSON.parse(localStorage.getItem("selectedHotel")),
+        }
+  },
+
   methods: {
 
+    buscarHotel : function() {
+
+        localStorage.setItem("nombreHotel", JSON.stringify(this.nombreHotel)),
+        this.$http.post('http://www.json-generator.com/api/json/get/cemCyNSvuG?indent=2', this.nombreHotel).then(
+                function(response) {
+                    this.hotels = response.body,
+                    window.location.href="http://localhost:8081/main#/ElegirHotel"
+                },
+                function() {
+                    alert("No encontro ningun hotel con el nombre especificado.")
+                })
+    }
+  },
+  created() {
+
+    localStorage.removeItem("nombreHotel");
   }
 }
 
