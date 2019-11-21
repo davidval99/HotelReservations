@@ -1,7 +1,6 @@
 <template>
     <header class="header">
-
-        <h1>Pagina de Hoteles</h1>
+        <h1>MALIANTECS HOTELS</h1>
         <div class="home">
             <a class="home" href="main">Home</a>
           </div>
