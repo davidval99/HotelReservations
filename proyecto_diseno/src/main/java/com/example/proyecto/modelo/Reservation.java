@@ -6,6 +6,7 @@
 package com.example.proyecto.modelo;
 
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 
@@ -13,21 +14,19 @@ public class Reservation {
     private int id;
     private int userId;
     private int roomId;
+    private int hotelId;
+    private String nameHotel;
+    private float  score;
+    private String country;
+    private String region;
     private String name;
     private String lastName;
     private String lastName2;
     private String email;
-    private int creditCardNumber;
+    private long creditCardNumber;
     private Date checkInDate;
     private Date checkOutDate;
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
+    private String roomType;
 
     public int getId() {
         return id;
@@ -37,12 +36,60 @@ public class Reservation {
         this.id = id;
     }
 
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
     public int getRoomId() {
         return roomId;
     }
 
     public void setRoomId(int roomId) {
         this.roomId = roomId;
+    }
+
+    public int getHotelId() {
+        return hotelId;
+    }
+
+    public void setHotelId(int hotelId) {
+        this.hotelId = hotelId;
+    }
+
+    public String getNameHotel() {
+        return nameHotel;
+    }
+
+    public void setNameHotel(String nameHotel) {
+        this.nameHotel = nameHotel;
+    }
+
+    public float getScore() {
+        return score;
+    }
+
+    public void setScore(float score) {
+        this.score = score;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
     }
 
     public String getName() {
@@ -77,11 +124,11 @@ public class Reservation {
         this.email = email;
     }
 
-    public int getCreditCardNumber() {
+    public long getCreditCardNumber() {
         return creditCardNumber;
     }
 
-    public void setCreditCardNumber(int creditCardNumber) {
+    public void setCreditCardNumber(long creditCardNumber) {
         this.creditCardNumber = creditCardNumber;
     }
 
@@ -101,11 +148,25 @@ public class Reservation {
         this.checkOutDate = checkOutDate;
     }
 
+    public String getRoomType() {
+        return roomType;
+    }
+
+    public void setRoomType(String roomType) {
+        this.roomType = roomType;
+    }
+
     @Override
     public String toString() {
         return "Reservation{" +
-                "id='" + id + '\'' +
-                ", roomId='" + roomId + '\'' +
+                "id=" + id +
+                ", userId=" + userId +
+                ", roomId=" + roomId +
+                ", hotelId=" + hotelId +
+                ", nameHotel='" + nameHotel + '\'' +
+                ", score=" + score +
+                ", country='" + country + '\'' +
+                ", region='" + region + '\'' +
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", lastName2='" + lastName2 + '\'' +
@@ -113,6 +174,7 @@ public class Reservation {
                 ", creditCardNumber=" + creditCardNumber +
                 ", checkInDate=" + checkInDate +
                 ", checkOutDate=" + checkOutDate +
+                ", roomType='" + roomType + '\'' +
                 '}';
     }
 
@@ -121,15 +183,26 @@ public class Reservation {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Reservation that = (Reservation) o;
-        return creditCardNumber == that.creditCardNumber &&
-                Objects.equals(id, that.id) &&
-                Objects.equals(roomId, that.roomId) &&
+        return id == that.id &&
+                userId == that.userId &&
+                roomId == that.roomId &&
+                hotelId == that.hotelId &&
+                Float.compare(that.score, score) == 0 &&
+                creditCardNumber == that.creditCardNumber &&
+                Objects.equals(nameHotel, that.nameHotel) &&
+                Objects.equals(country, that.country) &&
+                Objects.equals(region, that.region) &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(lastName, that.lastName) &&
                 Objects.equals(lastName2, that.lastName2) &&
                 Objects.equals(email, that.email) &&
                 Objects.equals(checkInDate, that.checkInDate) &&
-                Objects.equals(checkOutDate, that.checkOutDate);
+                Objects.equals(checkOutDate, that.checkOutDate) &&
+                Objects.equals(roomType, that.roomType);
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, userId, roomId, hotelId, nameHotel, score, country, region, name, lastName, lastName2, email, creditCardNumber, checkInDate, checkOutDate, roomType);
+    }
 }

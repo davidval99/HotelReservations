@@ -16,10 +16,6 @@ public interface ReservationDAO {
 
     public Optional<Reservation> CreateReservation(Reservation reserva);
 
-    public int getIdReservation();
-
-    public int getIdUser();
-
     public ArrayList<Reservation> findBy();
 
 

@@ -21,16 +21,14 @@ public class UserController {
     UserService UserService;
 
     @GetMapping(value = "/returnAllUser")
-    public String returnAllUser(){return UserService.returnAllUser().toString();}
+    public ArrayList<User> returnAllUser(){return UserService.returnAllUser();}
 
-
-    @RequestMapping(value = "/returnUserDate", method = RequestMethod.GET)
-    public @ResponseBody ArrayList<User> returnUserDate() throws ParseException {
+    @RequestMapping(value = "/returnUserDate/{Date1}/{Date2}", method = RequestMethod.GET)
+    public @ResponseBody ArrayList<User> returnUserDate(@PathVariable("Date1")String dateInicio, @PathVariable("Date2")String dateFinal) throws ParseException {
         String pattern = "yyyy-MM-dd";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-        Date inicio = simpleDateFormat.parse("12-01-2018");
-        Date fin = simpleDateFormat.parse("12-01-2018");
-
+        Date inicio = simpleDateFormat.parse(dateInicio);
+        Date fin = simpleDateFormat.parse(dateFinal);
 
         return UserService.returnUserDate(inicio, fin);
     }
