@@ -26,18 +26,20 @@ public class JdbcRoomDAO implements RoomDAO {
             stm=co.createStatement();
             rs=stm.executeQuery(sql);
             while (rs.next()) {
-
+                System.out.println("asd");
                 Room r = new Room();
                 r.setHabitacion_id(rs.getInt(1));
                 r.setPrecio(rs.getInt(2));
-                r.setTipo_id(rs.getInt(3));
-                r.setHotel_id(rs.getInt(4));
-
+                r.setHotel_id(rs.getInt(3));
+                r.setTipo_id(rs.getString(4));
+                System.out.println(r.toString());
+                System.out.println("asd");
                 resultado.add(r);
             }
             stm.close();
             co.close();
         } catch (SQLException e) {
+            System.out.println(e);
             return null;
         }
         return resultado;
@@ -57,20 +59,19 @@ public class JdbcRoomDAO implements RoomDAO {
         Room r = new Room();
         try {
             co = Conexion.conectar();
-            System.out.println("Me conecte");
 
             PreparedStatement ps=co.prepareStatement("Select * from habitacion where habitacion_id = ?;");
+
             ps.setInt(1,id);
             System.out.println(ps);
             ResultSet rs=ps.executeQuery();
-            System.out.println("Llegue aqui");
             if(rs.next()) {
                 r.setHabitacion_id(rs.getInt(1));
                 r.setPrecio(rs.getInt(2));
-                r.setTipo_id(rs.getInt(3));
-                r.setHotel_id(rs.getInt(4));
+                r.setHotel_id(rs.getInt(3));
+                r.setTipo_id(rs.getString(4));
             }
-
+            System.out.println(r.toString());
             co.close();
             return r;
 
@@ -98,8 +99,6 @@ public class JdbcRoomDAO implements RoomDAO {
 
                 Date StartDate2 = rs.getDate(1);
                 Date EndDate2 = rs.getDate(2);
-                System.out.println("sqlD1" + StartDate2);
-                System.out.println("sqlD2" + EndDate2);
 
                 if (!(EndDate1.before(StartDate2 )|| StartDate1.after(EndDate2))){
                     return false;

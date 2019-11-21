@@ -22,6 +22,8 @@ public class RoomController {
 
     @RequestMapping(value = "/RoomFindById/{id}", method = RequestMethod.GET)
     public @ResponseBody Room findById(@PathVariable("id") int id) {
+
+        System.out.println(id);
         return RoomService.findByID(id);
     }
 

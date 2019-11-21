@@ -6,7 +6,7 @@ public class Room {
 
     private int habitacion_id;
     private int precio;
-    private int tipo_id;
+    private String tipo_id;
     private int hotel_id;
 
     public int getHabitacion_id() {
@@ -17,7 +17,7 @@ public class Room {
         return precio;
     }
 
-    public int getTipo_id() {
+    public String getTipo_id() {
         return tipo_id;
     }
 
@@ -33,7 +33,7 @@ public class Room {
         this.precio = precio;
     }
 
-    public void setTipo_id(int tipo_id) {
+    public void setTipo_id(String tipo_id) {
         this.tipo_id = tipo_id;
     }
 
